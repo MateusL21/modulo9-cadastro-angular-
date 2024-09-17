@@ -1,0 +1,39 @@
+<app-student [categories]="categories" [student]="student" (saveEmitter)="saveStudent()"></app-student>
+
+<div class="container text-center">
+
+    <div class="display-6">
+        Alunos cadastrados
+      </div>
+      <div class="row">
+        <div class="col-md-10 offset-md-1">
+          <table class="table" id="studentsTable">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col" class="d-none d-md-table-cell">Email</th>
+                <th scope="col" class="d-none d-md-table-cell">Telefone</th>
+                <th scope="col" class="d-none d-md-table-cell">Curso</th>
+                <th scope="col" class="d-none d-md-table-cell">Turno</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of students">
+                <td>{{p.id}}</td>
+                <td>{{p.name}}</td>
+                <td>{{p.email}}</td>
+                <td>{{p.telefone | currency: 'BRL'}}</td>
+                <td>{{p.category.name}}</td>
+                <td>
+                  <span *ngIf="p.manha" class="badge bg-success text-white me-1">M</span>
+                  <span *ngIf="p.tarde" class="badge bg-primary text-white me-1">T</span>
+                  <span *ngIf="p.noite" class="badge bg-danger text-white me-1">M</span>
+                  </td>
+
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+            
